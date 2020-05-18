@@ -68,7 +68,7 @@ func (g *GraphList) V() int {
 	return g.v
 }
 
-func (g *GraphList) AdjacentEdge(v int) []int {
+func (g *GraphList) Adjacency(v int) []int {
 	if v < 0 || v >= g.v {
 		panic("vertex v invalid")
 	}
@@ -89,7 +89,7 @@ func (g *GraphList) String() string {
 	// adjancet edge
 	for i := 0; i < g.v; i++ {
 		bf.WriteString(fmt.Sprintf("Vertex %d: ", i))
-		adjacent := g.AdjacentEdge(i)
+		adjacent := g.Adjacency(i)
 		bf.WriteString(fmt.Sprintf("%v\n", adjacent))
 	}
 

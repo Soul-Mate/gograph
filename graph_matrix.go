@@ -64,7 +64,7 @@ func (g *GraphMatrix) V() int {
 	return g.v
 }
 
-func (g *GraphMatrix) AdjacentEdge(v int) []int {
+func (g *GraphMatrix) Adjacency(v int) []int {
 	if v < 0 || v >= g.v {
 		panic("vertex v invalid")
 	}
@@ -103,7 +103,7 @@ func (g *GraphMatrix) String() string {
 	// adjancet edge
 	for i := 0; i < g.v; i++ {
 		bf.WriteString(fmt.Sprintf("Vertex %d: ", i))
-		adjacent := g.AdjacentEdge(i)
+		adjacent := g.Adjacency(i)
 		bf.WriteString(fmt.Sprintf("%v\n", adjacent))
 	}
 
