@@ -10,10 +10,6 @@ type GraphMatrix struct {
 	g [][]int // the graph
 }
 
-func NewGraphMatrixFromFile() {
-
-}
-
 func NewGraphMatrixFromEdge(vertices int, edges [][2]int) *GraphMatrix {
 	if vertices <= 0 {
 		panic("first argument must be not negative on NewGraphMatrixFromEdge()")
@@ -64,7 +60,7 @@ func (g *GraphMatrix) V() int {
 	return g.v
 }
 
-func (g *GraphMatrix) Adjacency(v int) GraphAdjacencyIterator {
+func (g *GraphMatrix) Adjacency(v int) *GraphMatrixAdjacencyIterator {
 	if v < 0 || v >= g.v {
 		panic("vertex v invalid")
 	}
@@ -77,6 +73,18 @@ func (g *GraphMatrix) Adjacency(v int) GraphAdjacencyIterator {
 	}
 
 	return NewGraphMatrixAdjacencyIterator(adjacent)
+}
+
+func (g *GraphMatrix) IsConnected(v, w int) bool {
+	if v < 0 || v >= g.v {
+		panic("vertex v invalid")
+	}
+
+	if w < 0 || w >= g.v {
+		panic("vertex w invalid")
+	}
+
+	return g.g[v][w] == 1
 }
 
 func (g *GraphMatrix) String() string {

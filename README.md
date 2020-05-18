@@ -3,7 +3,7 @@ Go implementation of graph theory algorithm
 
 # TODO List
 
-- [ ] [abstraction graph representation interface]()
+- [ ] [abstraction graph representation interface](graph.go)
 
 - [x] [graph representation: adjacency matrix](graph_matrix.go) 
 

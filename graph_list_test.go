@@ -32,6 +32,7 @@ func TestNewGraphListFromEdges(t *testing.T) {
 		t.Run(testCase.name, func(t *testing.T) {
 			g := NewGraphListFromEdges(testCase.v, testCase.edges)
 			fmt.Println(g)
+			fmt.Println(g.IsConnected(0, 1), g.IsConnected(0, 5))
 		})
 	}
 }

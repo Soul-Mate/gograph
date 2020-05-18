@@ -68,6 +68,24 @@ func (g *GraphList) V() int {
 	return g.v
 }
 
+func (g *GraphList) IsConnected(v, w int) bool {
+	if v < 0 || v >= g.v {
+		panic("vertex v invalid")
+	}
+
+	if w < 0 || w >= g.v {
+		panic("vertex w invalid")
+	}
+
+	for e := g.g[v].Front(); e != nil; e = e.Next() {
+		if e.Value.(int) == w {
+			return true
+		}
+	}
+
+	return false
+}
+
 func (g *GraphList) Adjacency(v int) *GraphListAdjacencyIterator {
 	if v < 0 || v >= g.v {
 		panic("vertex v invalid")
