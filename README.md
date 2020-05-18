@@ -7,6 +7,6 @@ Go implementation of graph theory algorithm
 
 - [x] [graph representation: adjacency list (use double linked list)](graph_list.go) 
 
-- [] [graph representation: adjacency list (use redblack tree)]() 
+- [ ] [graph representation: adjacency list (use redblack tree)]() 
 
-- [] [graph representation: adjacency list (use hashmap)]() 
+- [ ] [graph representation: adjacency list (use hashmap)]() 
