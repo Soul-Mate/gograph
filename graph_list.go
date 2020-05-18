@@ -68,18 +68,12 @@ func (g *GraphList) V() int {
 	return g.v
 }
 
-func (g *GraphList) Adjacency(v int) []int {
+func (g *GraphList) Adjacency(v int) *GraphListAdjacencyIterator {
 	if v < 0 || v >= g.v {
 		panic("vertex v invalid")
 	}
 
-	l := g.g[v]
-	adjacent := make([]int, 0, g.v)
-	for e := l.Front(); e != nil; e = e.Next() {
-		adjacent = append(adjacent, e.Value.(int))
-	}
-
-	return adjacent
+	return NewGraphListAdjacencyIterator(g.g[v])
 }
 
 func (g *GraphList) String() string {
@@ -89,8 +83,11 @@ func (g *GraphList) String() string {
 	// adjancet edge
 	for i := 0; i < g.v; i++ {
 		bf.WriteString(fmt.Sprintf("Vertex %d: ", i))
-		adjacent := g.Adjacency(i)
-		bf.WriteString(fmt.Sprintf("%v\n", adjacent))
+		adjacencyIterator := g.Adjacency(i)
+		for !adjacencyIterator.HasNext() {
+			bf.WriteString(fmt.Sprintf("%d ", adjacencyIterator.Next()))
+		}
+		bf.WriteString("\n")
 	}
 
 	return bf.String()

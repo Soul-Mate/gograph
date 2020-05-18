@@ -64,7 +64,7 @@ func (g *GraphMatrix) V() int {
 	return g.v
 }
 
-func (g *GraphMatrix) Adjacency(v int) []int {
+func (g *GraphMatrix) Adjacency(v int) GraphAdjacencyIterator {
 	if v < 0 || v >= g.v {
 		panic("vertex v invalid")
 	}
@@ -76,7 +76,7 @@ func (g *GraphMatrix) Adjacency(v int) []int {
 		}
 	}
 
-	return adjacent
+	return NewGraphMatrixAdjacencyIterator(adjacent)
 }
 
 func (g *GraphMatrix) String() string {
@@ -103,8 +103,11 @@ func (g *GraphMatrix) String() string {
 	// adjancet edge
 	for i := 0; i < g.v; i++ {
 		bf.WriteString(fmt.Sprintf("Vertex %d: ", i))
-		adjacent := g.Adjacency(i)
-		bf.WriteString(fmt.Sprintf("%v\n", adjacent))
+		adjacencyIterator := g.Adjacency(i)
+		for !adjacencyIterator.HasNext() {
+			bf.WriteString(fmt.Sprintf("%d ", adjacencyIterator.Next()))
+		}
+		bf.WriteString("\n")
 	}
 
 	return bf.String()
