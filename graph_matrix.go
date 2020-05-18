@@ -43,11 +43,16 @@ func NewGraphMatrixFromEdge(vertices int, edges [][2]int) *GraphMatrix {
 			panic("vertex v invalid")
 		}
 
+		// check self-loop edge
 		if v1 == v2 {
-			panic("not support self-loop side")
+			panic("not support self-loop edge")
 		}
 
-		// TODO check paralle side
+		//  check paralle edge
+		if g.g[v1][v2] == 1 {
+			panic("not support parallel edge")
+		}
+
 		g.g[v1][v2] = 1
 		g.g[v2][v1] = 1
 	}
