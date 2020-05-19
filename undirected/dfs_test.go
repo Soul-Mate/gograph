@@ -1,4 +1,4 @@
-package gograph
+package undirected
 
 import (
 	"testing"
