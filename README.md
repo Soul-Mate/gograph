@@ -21,6 +21,14 @@ Go implementation of graph theory algorithm
 
 - [ ] [graph representation: adjacency list (use hashmap) test case]() 
 
-- [ ] [DFS](undirected/dfs.go)
+- [x] [DFS](undirected/dfs.go)
 
-- [ ] [DFS-Connected Component](undirected/dfs_cc.go)
+- [x] [DFS-Connected Component](undirected/dfs_cc.go)
+
+- [x] [DFS-Single Source Path](undirected/dfs_single_source_path.go)
+
+- [x] [DFS-Path](undirected/dfs_path.go)
+
+- [ ] [DFS-Cycle Detection](undirected/dfs_cycle_detection.go)
+
+- [ ] [DFS-Bipartite Detection]()
