@@ -2,21 +2,36 @@ package gograph
 
 type DFS struct {
 	g       Graph
-	visited []int
+	visited []bool
 }
 
 func NewDFS(g Graph) *DFS {
 	dfs := new(DFS)
 	dfs.g = g
-	dfs.visited = make([]int, dfs.g.V())
+	dfs.visited = make([]bool, dfs.g.V())
 
 	for i, n := 0, dfs.g.V(); i < n; i++ {
-		dfs.visited[i] = -1
+		dfs.visited[i] = false
 	}
 
 	return dfs
 }
 
 func (dfs *DFS) DFS() {
+	for i, vn := 0, dfs.g.V(); i < vn; i++ {
+		if !dfs.visited[i] {
+			dfs.dfs1(i)
+		}
+	}
+}
 
+func (dfs *DFS) dfs1(v int) {
+	dfs.visited[v] = true
+	it := dfs.g.Adjacency(v)
+	for !it.HasNext() {
+		w := it.Next()
+		if !dfs.visited[w] {
+			dfs.dfs1(w)
+		}
+	}
 }

@@ -86,7 +86,7 @@ func (g *GraphList) IsConnected(v, w int) bool {
 	return false
 }
 
-func (g *GraphList) Adjacency(v int) *GraphListAdjacencyIterator {
+func (g *GraphList) Adjacency(v int) GraphAdjacencyIterator {
 	if v < 0 || v >= g.v {
 		panic("vertex v invalid")
 	}
