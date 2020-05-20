@@ -2,6 +2,7 @@ package undirected
 
 type DFS struct {
 	g       Graph
+	order   []int
 	visited []bool
 }
 
@@ -27,6 +28,7 @@ func (dfs *DFS) DFS() {
 
 func (dfs *DFS) dfs1(v int) {
 	dfs.visited[v] = true
+	dfs.order = append(dfs.order, v)
 	it := dfs.g.Adjacency(v)
 	for !it.HasNext() {
 		w := it.Next()
@@ -34,4 +36,8 @@ func (dfs *DFS) dfs1(v int) {
 			dfs.dfs1(w)
 		}
 	}
+}
+
+func (dfs *DFS) Order() []int {
+	return dfs.order
 }

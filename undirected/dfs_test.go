@@ -1,6 +1,7 @@
 package undirected
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -11,19 +12,15 @@ func TestDFS(t *testing.T) {
 		edges [][2]int
 	}{
 		{
-			"v=9,edge=10",
-			9,
+			"v=7,edge=6",
+			7,
 			[][2]int{
 				{0, 1},
-				{0, 3},
-				{1, 2},
-				{1, 6},
+				{0, 2},
+				{1, 3},
+				{1, 4},
 				{2, 3},
-				{2, 5},
-				{3, 4},
-				{5, 4},
-				{5, 6},
-				{7, 8},
+				{2, 6},
 			},
 		},
 	}
@@ -33,6 +30,7 @@ func TestDFS(t *testing.T) {
 			g := NewGraphListFromEdges(testCase.v, testCase.edges)
 			dfs := NewDFS(g)
 			dfs.DFS()
+			fmt.Printf("dfs order: %v\n", dfs.Order())
 		})
 	}
 }
