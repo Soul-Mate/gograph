@@ -1,25 +1,24 @@
 package undirected
 
 type CycleDetection struct {
-	g       Graph
-	visited []bool
+	g        Graph
+	visited  []bool
+	hasCycle bool
 }
 
 func NewCycleDetection(g Graph) *CycleDetection {
 	c := new(CycleDetection)
 	c.g = g
 	c.visited = make([]bool, c.g.V())
-	return c
-}
 
-func (c *CycleDetection) Detection(s int) bool {
 	for i := 0; i < c.g.V(); i++ {
-		if c.dfs(s, s) {
-			return true
+		if !c.visited[i] && c.dfs(i, i) {
+			c.hasCycle = true
+			break
 		}
 	}
 
-	return false
+	return c
 }
 
 func (c *CycleDetection) dfs(v, p int) bool {
@@ -38,4 +37,8 @@ func (c *CycleDetection) dfs(v, p int) bool {
 	}
 
 	return false
+}
+
+func (c *CycleDetection) HasCycle() bool {
+	return c.hasCycle
 }
