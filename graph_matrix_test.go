@@ -20,7 +20,7 @@ func TestNewGraphMatrixFromEdge(t *testing.T) {
 		edges [][2]int
 	}{
 		{
-			"v=6,edge=6",
+			"v=5,edge=6",
 			5,
 			[][2]int{
 				{0, 1},
