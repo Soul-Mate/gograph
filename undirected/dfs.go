@@ -19,11 +19,12 @@ func NewDFS(g Graph) *DFS {
 }
 
 func (dfs *DFS) DFS() {
-	for i, vn := 0, dfs.g.V(); i < vn; i++ {
-		if !dfs.visited[i] {
-			dfs.dfs1(i)
-		}
-	}
+	//for i, vn := 0, dfs.g.V(); i < vn; i++ {
+	//	if !dfs.visited[i] {
+	//		dfs.dfs2(i)
+	//	}
+	//}
+	dfs.dfs2(0)
 }
 
 func (dfs *DFS) dfs1(v int) {
@@ -34,6 +35,25 @@ func (dfs *DFS) dfs1(v int) {
 		w := it.Next()
 		if !dfs.visited[w] {
 			dfs.dfs1(w)
+		}
+	}
+}
+
+func (dfs *DFS) dfs2(v int) {
+	var stack []int
+	stack = append(stack, v)
+	dfs.visited[v] = true
+	for len(stack) != 0 {
+		vv := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		dfs.order = append(dfs.order, vv)
+		it := dfs.g.Adjacency(vv)
+		for !it.HasNext() {
+			w := it.Next()
+			if !dfs.visited[w] {
+				stack = append(stack, w)
+				dfs.visited[w] = true
+			}
 		}
 	}
 }

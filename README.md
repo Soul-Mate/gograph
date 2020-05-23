@@ -31,4 +31,4 @@ Go implementation of graph theory algorithm
 
 - [x] [DFS-Cycle Detection](undirected/dfs_cycle_detection.go)
 
-- [ ] [DFS-Bipartite Detection](undirected/dfs_bipartite_detection.go)
+- [x] [DFS-Bipartite Detection](undirected/dfs_bipartite_detection.go)
