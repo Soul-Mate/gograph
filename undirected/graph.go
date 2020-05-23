@@ -1,4 +1,4 @@
-package gograph
+package undirected
 
 type Graph interface {
 	V() int

@@ -1,29 +1,26 @@
-package gograph
+package undirected
 
 import (
 	"fmt"
 	"testing"
 )
 
-func TestNewGraphListFromEdges(t *testing.T) {
+func TestDFS(t *testing.T) {
 	cases := []struct {
 		name  string
 		v     int
 		edges [][2]int
 	}{
 		{
-			"v=7,edge=9",
+			"v=7,edge=6",
 			7,
 			[][2]int{
 				{0, 1},
-				{0, 3},
-				{1, 2},
-				{1, 6},
-				{3, 4},
+				{0, 2},
+				{1, 3},
+				{1, 4},
 				{2, 3},
-				{5, 2},
-				{5, 4},
-				{6, 5},
+				{2, 6},
 			},
 		},
 	}
@@ -31,8 +28,9 @@ func TestNewGraphListFromEdges(t *testing.T) {
 	for _, testCase := range cases {
 		t.Run(testCase.name, func(t *testing.T) {
 			g := NewGraphListFromEdges(testCase.v, testCase.edges)
-			fmt.Println(g)
-			fmt.Println(g.IsConnected(0, 1), g.IsConnected(0, 5))
+			dfs := NewDFS(g)
+			dfs.DFS()
+			fmt.Printf("dfs order: %v\n", dfs.Order())
 		})
 	}
 }
